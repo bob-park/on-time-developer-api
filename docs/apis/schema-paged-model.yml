@@ -1,0 +1,25 @@
+title: PagedModel
+type: object
+description: 페이징 정보
+required:
+  - size
+  - number
+  - totalElements
+  - totalPages
+properties:
+  size:
+    type: number
+    description: 페이지당 표시 항목 수
+    example: 25
+  number:
+    type: number
+    description: 페이지 번호 (zero-based)
+    example: 0
+  totalElements:
+    type: number
+    description: 전체 개수
+    example: 21
+  totalPages:
+    type: number
+    description: 전체 페이지 수
+    example: 1

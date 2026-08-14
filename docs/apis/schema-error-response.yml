@@ -1,0 +1,37 @@
+title: ProblemDetail
+description: >
+  `RFC 9457` 에 참조하여 작성됨
+required:
+  - type
+  - title
+  - status
+  - detail
+  - instance
+  - code
+  - timestamp
+  - exception
+properties:
+  type:
+    type: string
+    description: error 에 관한 link (별도의 웹페이지 없어 blank 로 나옴)
+  title:
+    type: string
+    description: 예외 제목
+  status:
+    type: number
+    description: HTTP Status Code
+  detail:
+    type: string
+    description: 예외에 대한 상세 내용
+  instance:
+    type: string
+    description: 예외가 발생한 uri
+  code:
+    type: string
+    description: 예외 코드
+  timestamp:
+    type: string
+    description: 예외가 발생한 시간 (서버 시간 기준)
+  exception:
+    type: string
+    description: 예외가 발생한 class name (서버 기준)

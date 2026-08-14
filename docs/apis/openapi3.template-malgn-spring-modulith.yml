@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: Template REST API APIs
+  description: 이것은 Template REST API Docs 이다.
+  version: 0.0.0-rc1-20260724
+servers:
+  - url: 'http://localhost:8080/api'
+    description: Local Server
+security:
+  - keyflow-auth:
+      - openid
+      - profile
+## components
+components:
+  securitySchemes:
+    keyflow-auth:
+      type: oauth2
+      description: 이 API 는 KeyFlow Auth 기반의 OAuth 2.0 로그인 이다.
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://auth.keyflow-dev.com/oauth2/authorize'
+          tokenUrl: 'https://auth.keyflow-dev.com/oauth2/token'
+          refreshUrl: 'https://auth.keyflow-dev.com/oauth2/token'
+          scopes:
+            openid: open id connect
+            profile: profile
+
+paths:
