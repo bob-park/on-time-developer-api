@@ -1,0 +1,24 @@
+type: object
+title: CommitRegisterRequestV1
+required:
+  - commitId
+  - repo
+  - branch
+  - author
+  - commitMessage
+properties:
+  commitId:
+    type: string
+    description: 커밋 해시
+  repo:
+    type: string
+    description: 저장소 이름
+  branch:
+    type: string
+    description: 브랜치 이름
+  author:
+    type: string
+    description: 커밋 작성자
+  commitMessage:
+    type: string
+    description: 커밋 메시지

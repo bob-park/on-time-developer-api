@@ -26,3 +26,6 @@ components:
             profile: profile
 
 paths:
+  # commits
+  /v1/developers/commits:
+    $ref: './v1/developers/path-commits.yml'

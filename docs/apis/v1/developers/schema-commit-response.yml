@@ -1,0 +1,44 @@
+type: object
+title: CommitResponseV1
+required:
+  - id
+  - commitId
+  - repo
+  - branch
+  - author
+  - commitMessage
+  - createdDate
+  - createdBy
+properties:
+  id:
+    type: string
+    description: 커밋 아이디 (Snowflake ID)
+  commitId:
+    type: string
+    description: 커밋 해시
+  repo:
+    type: string
+    description: 저장소 이름
+  branch:
+    type: string
+    description: 브랜치 이름
+  author:
+    type: string
+    description: 커밋 작성자
+  commitMessage:
+    type: string
+    description: 커밋 메시지
+  createdDate:
+    type: string
+    format: date-time
+    description: 등록일
+  createdBy:
+    type: string
+    description: 등록자
+  lastModifiedDate:
+    type: string
+    format: date-time
+    description: 최종 수정일
+  lastModifiedBy:
+    type: string
+    description: 최종 수정자
