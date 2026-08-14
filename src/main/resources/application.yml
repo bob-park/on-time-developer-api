@@ -57,7 +57,7 @@ spring:
   kafka:
     bootstrap-servers: ${kafka_bootstrap_servers:localhost:9092}
     consumer:
-      group-id: ${kafka_consumer_group_id:template}
+      group-id: ${kafka_consumer_group_id:on-time-developer-api}
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   modulith:
