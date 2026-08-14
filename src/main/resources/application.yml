@@ -27,7 +27,7 @@ management:
 ## spring
 spring:
   application:
-    name: template
+    name: on-time-developer-api
   main:
     banner-mode: log
     allow-bean-definition-overriding: on
