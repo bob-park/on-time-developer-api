@@ -3,7 +3,7 @@ create table users_authors
 (
     id                 bigserial               not null primary key,
     user_unique_id     bigint                  not null,
-    author             varchar(100)            not null,
+    author             varchar(100)            not null unique,
     created_date       timestamp default now() not null,
     created_by         varchar(100)            not null,
     last_modified_date timestamp,
