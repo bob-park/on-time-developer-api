@@ -1,5 +1,7 @@
 package com.malgn.developers.application.service;
 
+import static org.apache.commons.lang3.math.NumberUtils.*;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,9 +41,9 @@ public class CommitQueryService implements CommitQuery {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        String createdBy = criteria.createdBy();
+        Long userUniqueId = criteria.userUniqueId();
 
-        if (StringUtils.isNotBlank(criteria.createdBy())) {
+        if (criteria.userUniqueId() != null) {
 
             // 조건에 createdBy 가 존재하는 경우 권한 체크
             boolean check =
@@ -51,7 +53,7 @@ public class CommitQueryService implements CommitQuery {
                         .userId(auth.getName())
                         .relation(RelationType.CAN_READ)
                         .objectType(FgaObjectType.USER_TYPE)
-                        .objectId(criteria.createdBy())
+                        .objectId(String.valueOf(criteria.userUniqueId()))
                         .build());
 
             if (!check) {
@@ -59,7 +61,7 @@ public class CommitQueryService implements CommitQuery {
             }
 
         } else {
-            createdBy = auth.getName();
+            userUniqueId = toLong(auth.getName());
         }
 
         Page<Commit> result =
@@ -69,9 +71,9 @@ public class CommitQueryService implements CommitQuery {
                     .branch(criteria.branch())
                     .author(criteria.author())
                     .commitMessage(criteria.commitMessage())
-                    .createdDateFrom(criteria.createdDateFrom())
-                    .createdDateTo(criteria.createdDateTo())
-                    .createdBy(createdBy)
+                    .commitDateFrom(criteria.commitDateFrom())
+                    .commitDateTo(criteria.commitDateTo())
+                    .userUniqueId(userUniqueId)
                     .build(),
                 pageable);
 

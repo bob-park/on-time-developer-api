@@ -44,7 +44,9 @@ public class CommitApiV1 {
                     .repo(request.repo())
                     .branch(request.branch())
                     .author(request.author())
+                    .userUniqueId(request.userUniqueId())
                     .commitMessage(request.commitMessage())
+                    .commitDate(request.commitDate())
                     .build());
 
         return from(result);
@@ -53,7 +55,7 @@ public class CommitApiV1 {
 
     @GetMapping(path = "")
     public PagedModel<CommitResponseV1> search(@Valid CommitSearchRequestV1 request,
-        @PageableDefault(size = 25, sort = "createdDate", direction = Direction.DESC) Pageable pageable) {
+        @PageableDefault(size = 25, sort = "commitDate", direction = Direction.DESC) Pageable pageable) {
 
         Page<CommitResult> result =
             commitQuery.search(
@@ -61,10 +63,10 @@ public class CommitApiV1 {
                     .repo(request.repo())
                     .branch(request.branch())
                     .author(request.author())
+                    .userUniqueId(request.userUniqueId())
                     .commitMessage(request.commitMessage())
-                    .createdDateFrom(request.createdDateFrom())
-                    .createdDateTo(request.createdDateTo())
-                    .createdBy(request.createdBy())
+                    .commitDateFrom(request.commitDateFrom())
+                    .commitDateTo(request.commitDateTo())
                     .build(),
                 pageable);
 

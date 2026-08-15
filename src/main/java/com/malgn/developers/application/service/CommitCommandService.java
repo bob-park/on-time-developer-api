@@ -31,7 +31,9 @@ public class CommitCommandService implements CommitRegister {
                 .repo(command.repo())
                 .branch(command.branch())
                 .author(command.author())
+                .userUniqueId(command.userUniqueId())
                 .commitMessage(command.commitMessage())
+                .commitDate(command.commitDate())
                 .build();
 
         createdCommit = commitRepository.save(createdCommit);
