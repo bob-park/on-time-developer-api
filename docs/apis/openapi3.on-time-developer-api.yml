@@ -29,3 +29,6 @@ paths:
   # commits
   /v1/developers/commits:
     $ref: './v1/developers/path-commits.yml'
+  # user authors
+  /v1/users/authors:
+    $ref: './v1/users/path-users-authors.yml'

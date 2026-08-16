@@ -1,0 +1,70 @@
+get:
+  operationId: getUserAuthorV1
+  tags:
+    - User Authors V1
+  summary: 사용자 작성자 조회
+  description: >
+    커밋 작성자(author) 이름으로 매핑된 사용자 작성자 정보를 조회한다.
+  security:
+    - keyflow-auth:
+        - openid
+        - profile
+  parameters:
+    - name: author
+      in: query
+      required: true
+      description: 커밋 작성자
+      schema:
+        type: string
+  responses:
+    "200":
+      description: "Successful Response"
+      content:
+        application/json:
+          schema:
+            $ref: "./schema-user-author-response.yml"
+    "400":
+      description: "Bad Request"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "../../schema-error-response.yml"
+          example:
+            type: "about:blank"
+            title: "Bad Request"
+            status: 400
+            detail: "Invalid request content."
+            instance: "/api/v1/users/authors"
+            code: BAD_REQUEST
+            timestamp: "2026-08-16T10:00:00"
+            exception: MethodArgumentNotValidException
+    "401":
+      description: "Unauthorized"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "../../schema-error-response.yml"
+          example:
+            type: "about:blank"
+            title: "Unauthorized"
+            status: 401
+            detail: "Full authentication is required to access this resource"
+            instance: "/api/v1/users/authors"
+            code: UNAUTHORIZED
+            timestamp: "2026-08-16T10:00:00"
+            exception: InsufficientAuthenticationException
+    "404":
+      description: "Not Found"
+      content:
+        application/problem+json:
+          schema:
+            $ref: "../../schema-error-response.yml"
+          example:
+            type: "about:blank"
+            title: "Not Found"
+            status: 404
+            detail: "UserAuthor not found. (bob)"
+            instance: "/api/v1/users/authors"
+            code: NOT_FOUND
+            timestamp: "2026-08-16T10:00:00"
+            exception: NotFoundException

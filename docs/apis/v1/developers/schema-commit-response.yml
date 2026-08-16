@@ -6,7 +6,9 @@ required:
   - repo
   - branch
   - author
+  - userUniqueId
   - commitMessage
+  - commitDate
   - createdDate
   - createdBy
 properties:
@@ -25,9 +27,16 @@ properties:
   author:
     type: string
     description: 커밋 작성자
+  userUniqueId:
+    type: string
+    description: 사용자 고유 아이디
   commitMessage:
     type: string
     description: 커밋 메시지
+  commitDate:
+    type: string
+    format: date-time
+    description: 커밋 일시
   createdDate:
     type: string
     format: date-time

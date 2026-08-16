@@ -82,32 +82,33 @@ get:
       description: 커밋 작성자
       schema:
         type: string
+    - name: userUniqueId
+      in: query
+      required: false
+      description: 사용자 고유 아이디
+      schema:
+        type: integer
+        format: int64
     - name: commitMessage
       in: query
       required: false
       description: 커밋 메시지 (부분 일치)
       schema:
         type: string
-    - name: createdDateFrom
+    - name: commitDateFrom
       in: query
       required: false
-      description: 등록일 검색 시작 (이상)
+      description: 커밋 일시 검색 시작 (이상)
       schema:
         type: string
         format: date-time
-    - name: createdDateTo
+    - name: commitDateTo
       in: query
       required: false
-      description: 등록일 검색 종료 (이하)
+      description: 커밋 일시 검색 종료 (이하)
       schema:
         type: string
         format: date-time
-    - name: createdBy
-      in: query
-      required: false
-      description: 등록자
-      schema:
-        type: string
     - name: page
       in: query
       required: false
@@ -128,7 +129,7 @@ get:
       description: "정렬 조건 (`{field},{asc|desc}`)"
       schema:
         type: string
-        default: "createdDate,desc"
+        default: "commitDate,desc"
   responses:
     "200":
       description: "Successful Response"
