@@ -12,7 +12,9 @@ public record CommitResult(Long id,
                            String repo,
                            String branch,
                            String author,
+                           Long userUniqueId,
                            String commitMessage,
+                           LocalDateTime commitDate,
                            LocalDateTime createdDate,
                            String createdBy,
                            LocalDateTime lastModifiedDate,
@@ -26,7 +28,9 @@ public record CommitResult(Long id,
             .repo(commit.getRepo())
             .branch(commit.getBranch())
             .author(commit.getAuthor())
+            .userUniqueId(commit.getUserUniqueId())
             .commitMessage(commit.getCommitMessage())
+            .commitDate(commit.getCommitDate())
             .createdDate(commit.getCreatedDate())
             .createdBy(commit.getCreatedBy())
             .lastModifiedDate(commit.getLastModifiedDate())

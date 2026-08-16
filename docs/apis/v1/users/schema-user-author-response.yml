@@ -1,0 +1,32 @@
+type: object
+title: UserAuthorResponseV1
+required:
+  - id
+  - userUniqueId
+  - author
+  - createdDate
+  - createdBy
+properties:
+  id:
+    type: string
+    description: 사용자 작성자 아이디 (Snowflake ID)
+  userUniqueId:
+    type: string
+    description: 사용자 고유 아이디
+  author:
+    type: string
+    description: 커밋 작성자
+  createdDate:
+    type: string
+    format: date-time
+    description: 등록일
+  createdBy:
+    type: string
+    description: 등록자
+  lastModifiedDate:
+    type: string
+    format: date-time
+    description: 최종 수정일
+  lastModifiedBy:
+    type: string
+    description: 최종 수정자

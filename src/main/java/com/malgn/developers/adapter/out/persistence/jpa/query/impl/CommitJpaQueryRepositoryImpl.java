@@ -61,9 +61,9 @@ public class CommitJpaQueryRepositoryImpl implements CommitJpaQueryRepository {
             .and(containBranch(condition.branch()))
             .and(containAuthor(condition.author()))
             .and(containCommitMessage(condition.commitMessage()))
-            .and(goeFrom(condition.createdDateFrom()))
-            .and(loeTo(condition.createdDateTo()))
-            .and(eqCreatedBy(condition.createdBy()));
+            .and(goeFrom(condition.commitDateFrom()))
+            .and(loeTo(condition.commitDateTo()))
+            .and(eqUserUniqueId(condition.userUniqueId()));
 
         return builder;
     }
@@ -80,20 +80,20 @@ public class CommitJpaQueryRepositoryImpl implements CommitJpaQueryRepository {
         return StringUtils.isNotBlank(author) ? commit.author.containsIgnoreCase(author) : null;
     }
 
+    private BooleanExpression eqUserUniqueId(Long userUniqueId) {
+        return userUniqueId != null ? commit.userUniqueId.eq(userUniqueId) : null;
+    }
+
     private BooleanExpression containCommitMessage(String commitMessage) {
         return StringUtils.isNotBlank(commitMessage) ? commit.commitMessage.containsIgnoreCase(commitMessage) : null;
     }
 
     private BooleanExpression goeFrom(LocalDateTime from) {
-        return from != null ? commit.createdDate.goe(from) : null;
+        return from != null ? commit.commitDate.goe(from) : null;
     }
 
     private BooleanExpression loeTo(LocalDateTime to) {
-        return to != null ? commit.createdDate.loe(to) : null;
-    }
-
-    private BooleanExpression eqCreatedBy(String createdBy) {
-        return StringUtils.isNotBlank(createdBy) ? commit.createdBy.eq(createdBy) : null;
+        return to != null ? commit.commitDate.loe(to) : null;
     }
 
     /*
@@ -106,6 +106,6 @@ public class CommitJpaQueryRepositoryImpl implements CommitJpaQueryRepository {
                 new QueryDslPath<>("repo", commit.repo),
                 new QueryDslPath<>("branch", commit.branch),
                 new QueryDslPath<>("author", commit.author),
-                new QueryDslPath<>("createdDate", commit.createdDate)));
+                new QueryDslPath<>("commitDate", commit.commitDate)));
     }
 }
