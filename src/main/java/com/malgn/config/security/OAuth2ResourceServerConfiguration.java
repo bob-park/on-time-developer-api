@@ -59,7 +59,7 @@ public class OAuth2ResourceServerConfiguration {
 
         http.authorizeHttpRequests(
             requests ->
-                requests.anyRequest().access(requestAuthorizationManager()));
+                requests.anyRequest().authenticated());
 
         http.oauth2ResourceServer(
             resourceServer ->
