@@ -8,8 +8,8 @@ import lombok.Builder;
 public record CommitQueryCondition(String repo,
                                    String branch,
                                    String author,
+                                   Long userUniqueId,
                                    String commitMessage,
-                                   LocalDateTime createdDateFrom,
-                                   LocalDateTime createdDateTo,
-                                   String createdBy) {
+                                   LocalDateTime commitDateFrom,
+                                   LocalDateTime commitDateTo) {
 }

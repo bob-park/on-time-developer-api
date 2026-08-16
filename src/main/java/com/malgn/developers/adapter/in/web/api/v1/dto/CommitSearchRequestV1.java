@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 public record CommitSearchRequestV1(String repo,
                                     String branch,
                                     String author,
+                                    Long userUniqueId,
                                     String commitMessage,
-                                    LocalDateTime createdDateFrom,
-                                    LocalDateTime createdDateTo,
-                                    String createdBy) {
+                                    LocalDateTime commitDateFrom,
+                                    LocalDateTime commitDateTo) {
 }

@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.malgn'
-version = '0.0.0-rc1-20260724'
+version = '0.0.1-rc1-20260816'
 
 java {
     toolchain {

@@ -12,7 +12,9 @@ public record CommitResponseV1(String id,
                                String repo,
                                String branch,
                                String author,
+                               String userUniqueId,
                                String commitMessage,
+                               LocalDateTime commitDate,
                                LocalDateTime createdDate,
                                String createdBy,
                                LocalDateTime lastModifiedDate,
@@ -25,7 +27,9 @@ public record CommitResponseV1(String id,
             .repo(result.repo())
             .branch(result.branch())
             .author(result.author())
+            .userUniqueId(String.valueOf(result.userUniqueId()))
             .commitMessage(result.commitMessage())
+            .commitDate(result.commitDate())
             .createdDate(result.createdDate())
             .createdBy(result.createdBy())
             .lastModifiedDate(result.lastModifiedDate())

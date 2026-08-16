@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: OnTime Developer REST API APIs
   description: 이것은 OnTime Developer REST API Docs 이다.
-  version: 0.0.0-rc1-20260724
+  version: 0.0.1-rc1-20260816
 servers:
   - url: 'http://localhost:8080/api'
     description: Local Server
@@ -29,3 +29,6 @@ paths:
   # commits
   /v1/developers/commits:
     $ref: './v1/developers/path-commits.yml'
+  # user authors
+  /v1/users/authors:
+    $ref: './v1/users/path-users-authors.yml'
