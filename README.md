@@ -1,4 +1,4 @@
-# MALGN Spring Modulith Template
+# OnTime Developer API
 이 repository 는 Spring Boot 기반의 프로젝트를 시작하기 위한 템플릿입니다. 이 템플릿은 기본적인 구조와 설정을 포함하고 있어, 새로운 프로젝트를 빠르게 시작할 수 있도록 도와줍니다.
 
 ## dependency
