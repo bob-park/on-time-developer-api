@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.apache.commons.lang3.StringUtils;
 
 import com.malgn.developers.application.provided.CommitQuery;
+import com.malgn.developers.application.provided.model.CommitExistsResult;
 import com.malgn.developers.application.provided.model.CommitQueryCriteria;
 import com.malgn.developers.application.provided.model.CommitResult;
 import com.malgn.developers.application.required.CommitRepository;
@@ -78,5 +79,13 @@ public class CommitQueryService implements CommitQuery {
                 pageable);
 
         return result.map(CommitResult::from);
+    }
+
+    @Override
+    public CommitExistsResult exists(String commitId) {
+
+        boolean exists = commitRepository.exists(commitId);
+
+        return new CommitExistsResult(exists);
     }
 }

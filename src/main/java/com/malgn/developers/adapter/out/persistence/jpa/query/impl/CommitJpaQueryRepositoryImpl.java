@@ -1,6 +1,7 @@
 package com.malgn.developers.adapter.out.persistence.jpa.query.impl;
 
 import static com.malgn.developers.domain.QCommit.*;
+import static org.apache.commons.lang3.ObjectUtils.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -48,6 +49,18 @@ public class CommitJpaQueryRepositoryImpl implements CommitJpaQueryRepository {
                 .where(mappingCondition(condition));
 
         return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchOne);
+    }
+
+    @Override
+    public boolean exists(String commitId) {
+
+        Long count =
+            query.select(commit.commitId.count())
+                .from(commit)
+                .where(commit.commitId.eq(commitId))
+                .fetchOne();
+
+        return getIfNull(count, 0L) > 0;
     }
 
     /*

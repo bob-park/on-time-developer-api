@@ -10,4 +10,6 @@ public interface CommitJpaQueryRepository {
 
     Page<Commit> search(CommitQueryCondition condition, Pageable pageable);
 
+    boolean exists(String commitId);
+
 }

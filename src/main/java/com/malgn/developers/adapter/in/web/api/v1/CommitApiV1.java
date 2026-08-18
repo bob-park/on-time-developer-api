@@ -12,16 +12,19 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.malgn.developers.adapter.in.web.api.v1.dto.CommitExistsResponseV1;
 import com.malgn.developers.adapter.in.web.api.v1.dto.CommitRegisterRequestV1;
 import com.malgn.developers.adapter.in.web.api.v1.dto.CommitResponseV1;
 import com.malgn.developers.adapter.in.web.api.v1.dto.CommitSearchRequestV1;
 import com.malgn.developers.application.provided.CommitQuery;
 import com.malgn.developers.application.provided.CommitRegister;
+import com.malgn.developers.application.provided.model.CommitExistsResult;
 import com.malgn.developers.application.provided.model.CommitQueryCriteria;
 import com.malgn.developers.application.provided.model.CommitRegisterCommand;
 import com.malgn.developers.application.provided.model.CommitResult;
@@ -71,5 +74,12 @@ public class CommitApiV1 {
                 pageable);
 
         return new PagedModel<>(result.map(CommitResponseV1::from));
+    }
+
+    @GetMapping(path = "/exists/{commitId}")
+    public CommitExistsResponseV1 exists(@PathVariable String commitId) {
+        CommitExistsResult result = commitQuery.exists(commitId);
+
+        return CommitExistsResponseV1.from(result);
     }
 }
