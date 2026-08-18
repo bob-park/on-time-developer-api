@@ -32,4 +32,9 @@ public class CommitJpaRepositoryAdapter implements CommitRepository {
     public Page<Commit> search(CommitQueryCondition condition, Pageable pageable) {
         return commitRepository.search(condition, pageable);
     }
+
+    @Override
+    public boolean exists(String commitId) {
+        return commitRepository.exists(commitId);
+    }
 }

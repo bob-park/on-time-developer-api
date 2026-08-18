@@ -15,4 +15,6 @@ public interface CommitRepository {
     Optional<Commit> findCommit(Long id);
 
     Page<Commit> search(CommitQueryCondition condition, Pageable pageable);
+
+    boolean exists(String commitId);
 }
